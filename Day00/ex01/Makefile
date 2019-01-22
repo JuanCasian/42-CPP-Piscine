@@ -6,7 +6,7 @@
 #    By: jcasian <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 16:42:47 by jcasian           #+#    #+#              #
-#    Updated: 2019/01/21 19:53:57 by jcasian          ###   ########.fr        #
+#    Updated: 2019/01/21 19:30:37 by jcasian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 #colors
@@ -16,7 +16,7 @@ GREEN = \033[0;32m
 YELLOW = \033[0;33m
 
 # program name
-NAME = megaphone
+NAME = awesome_phonebook
 
 # Compilationn flags
 FLAGS = -Wall -Werror -Wextra
@@ -26,7 +26,7 @@ SRCSDIR = .
 
 # Sources
 SRCS = $(addprefix $(SRCSDIR)/,\
-	   main.cpp)
+	   main.cpp Phonebook.class.cpp)
 
 # Objects
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
