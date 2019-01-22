@@ -6,7 +6,7 @@
 #    By: jcasian <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/21 16:42:47 by jcasian           #+#    #+#              #
-#    Updated: 2019/01/21 18:24:27 by jcasian          ###   ########.fr        #
+#    Updated: 2019/01/21 18:36:36 by jcasian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 #colors
@@ -26,7 +26,11 @@ SRCSDIR = .
 
 # Sources
 SRCS = $(addprefix $(SRCSDIR)/,\
-	   Megaphone.class.cpp main.cpp)
+	   main.cpp)
+       :wa
+
+:Wa
+:wa
 
 # Objects
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
