@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.class.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/21 20:19:42 by jcasian           #+#    #+#             */
-/*   Updated: 2019/01/21 20:19:44 by jcasian          ###   ########.fr       */
+/*   Created: 2019/01/21 20:19:32 by jcasian           #+#    #+#             */
+/*   Updated: 2019/01/21 20:19:33 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#ifndef CRAPPY_PHONEBOOK_HPP
+# define CRAPPY_PHONEBOOK_HPP
 
-# include "crappy_phonebook.hpp"
+# include <iostream>
+# include <string>
+# include "Contact.class.hpp"
+# include "Phonebook.class.hpp"
 
-class Phonebook {
-public:
-	Phonebook(void);
-	~Phonebook(void);
-	void add_contact(void);
-	void search_contact(void) const;
-private:
-	Contact	contacts[8];
-	int		nb_contacts;
-};
-
-#endif
+# endif

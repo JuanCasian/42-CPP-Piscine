@@ -10,14 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include "Contact.class.cpp"
-
-void print_preview(int index) {
-    index, first name, last name and nickname.
-    cout <<
-}
+#include "crappy_phonebook.hpp"
 
 Contact::Contact(void){
     this->first_name = "";
@@ -38,7 +31,30 @@ Contact::~Contact(void){
     return ;
 }
 
-void Contact::print_contact(void) {
+std::string	Contact::format_manager(std::string str) const{
+	size_t	len;
+
+	len = str.length();
+	if (len >= 10)
+		return (str.substr(0, 9) + ".");
+	else
+	{
+		while (len++ < 10)
+		{
+			str = " " + str;
+		}
+	}
+	return (str);
+}
+
+void 	Contact::print_preview(int index) const{
+    std::cout << "|" << this->format_manager(std::to_string(index)) << "|";
+	std::cout << this->format_manager(this->first_name) << "|";
+	std::cout << this->format_manager(this->last_name) << "|";
+	std::cout << this->format_manager(this->nickname) << "|" << std::endl;
+}
+
+void 	Contact::print_contact(void) const{
     std::cout << "Printing contact information:" << std::endl;
     std::cout << "First name: " << this->get_first_name() << std::endl;
     std::cout << "Last name: " << this->get_last_name() << std::endl;
@@ -53,123 +69,123 @@ void Contact::print_contact(void) {
     std::cout << "Darkest secret: " << this->get_darkest_secret() << std::endl;
 }
 
-void Contact::get_first_name(void) {
+std::string 	Contact::get_first_name(void) const{
     return this->first_name;
 }
 
-void Contact::get_last_name(void) {
+std::string 	Contact::get_last_name(void) const{
     return this->last_name;
 }
 
-void Contact::get_nickname(void) {
+std::string 	Contact::get_nickname(void) const{
     return this->nickname;
 }
 
-void Contact::get_login(void) {
+std::string 	Contact::get_login(void) const{
     return this->login;
 }
 
-void Contact::get_postal_address(void) {
+std::string 	Contact::get_postal_address(void) const{
     return this->postal_address;
 }
 
-void Contact::get_email_address(void) {
+std::string 	Contact::get_email_address(void) const{
     return this->email_address;
 }
 
-void Contact::get_phone_number(void) {
+std::string 	Contact::get_phone_number(void) const{
     return this->phone_number;
 }
 
-void Contact::get_birthday_date(void) {
+std::string 	Contact::get_birthday_date(void) const{
     return this->birthday_date;
 }
 
-void Contact::get_favorite_meal(void) {
+std::string 	Contact::get_favorite_meal(void) const{
     return this->favorite_meal;
 }
 
-void Contact::get_underwear_color(void) {
+std::string 	Contact::get_underwear_color(void) const{
     return this->underwear_color;
 }
 
-void Contact::get_darkest_secret(void) {
+std::string 	Contact::get_darkest_secret(void) const{
     return this->darkest_secret;
 }
 
-void Contact::set_first_name(void) {
+void 	Contact::set_first_name(void) {
     std::string info;
     std::cout << "Please insert first name:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->first_name = info;
 }
 
-void Contact::set_last_name(void) {
+void 	Contact::set_last_name(void) {
     std::string info;
     std::cout << "Please insert last name:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->last_name = info;
 }
 
-void Contact::set_nickname(void) {
+void 	Contact::set_nickname(void) {
     std::string info;
     std::cout << "Please insert nickname:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->nickname = info;
 }
 
-void Contact::set_login(void) {
+void 	Contact::set_login(void) {
     std::string info;
     std::cout << "Please insert login:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->login = info;
 }
 
-void Contact::set_postal_address(void) {
+void 	Contact::set_postal_address(void) {
     std::string info;
     std::cout << "Please insert postal address:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->postal_address = info;
 }
 
-void Contact::set_email_address(void) {
+void 	Contact::set_email_address(void) {
     std::string info;
     std::cout << "Please insert email email address:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->email_address = info;
 }
 
-void Contact::set_phone_number(void) {
+void 	Contact::set_phone_number(void) {
     std::string info;
     std::cout << "Please insert phone number:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->phone_number = info;
 }
 
-void Contact::set_birthday_date(void) {
+void 	Contact::set_birthday_date(void) {
     std::string info;
     std::cout << "Please insert birthday date:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->birthday_date = info;
 }
 
-void Contact::set_favorite_meal(void) {
+void 	Contact::set_favorite_meal(void) {
     std::string info;
     std::cout << "Please insert favorite meal:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->favorite_meal = info;
 }
 
-void Contact::set_underwear_color(void) {
+void 	Contact::set_underwear_color(void) {
     std::string info;
     std::cout << "Please insert underwear color:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->underwear_color = info;
 }
 
-void Contact::set_darkest_secret(void) {
+void 	Contact::set_darkest_secret(void) {
     std::string info;
     std::cout << "Please insert darkest secret:" << std::endl;
-    std::getline (std::cin, info);
+    std::cin >> info;
     this->darkest_secret = info;
 }
