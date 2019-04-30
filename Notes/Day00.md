@@ -1,5 +1,20 @@
 # Day 00 Notes
 
+- [Day 00 Notes](#day-00-notes)
+	- [Namespaces](#namespaces)
+	- [STDIO Streams](#stdio-streams)
+	- [Class and instance](#class-and-instance)
+	- [Member attributes and member functions](#member-attributes-and-member-functions)
+	- [This](#this)
+	- [Initialization list](#initialization-list)
+	- [Const](#const)
+	- [Visibility](#visibility)
+	- [Class vs Struct](#class-vs-struct)
+	- [Accerssors C++](#accerssors-c)
+	- [Comparison C++](#comparison-c)
+	- [Non member attributes and non member functions](#non-member-attributes-and-non-member-functions)
+	- [Pointers to members](#pointers-to-members)
+
 ## Namespaces
 
 - Used to group together symbols and functions
