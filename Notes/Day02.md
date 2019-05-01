@@ -1,5 +1,10 @@
 # Day02 notes
 
+- [Day02 notes](#day02-notes)
+	- [Adhoc Polymorphism](#adhoc-polymorphism)
+	- [Operator Overload](#operator-overload)
+	- [Canonical form](#canonical-form)
+
 ## Adhoc Polymorphism
 
 - a.k.a. Function overload
@@ -74,7 +79,7 @@ Integer		&Integer::operator=(Integer const &rhs) {
 	return *this;
 }
 
-Integer		operator+(Integer const &rhs) const {
+Integer		Integer::operator+(Integer const &rhs) const {
 	return Integer(this->_n + rhs.getValue());
 }
 // Notice that  here we return a new instance of the integer
