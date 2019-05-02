@@ -1,5 +1,10 @@
 # Day01 Notes
 
+- [Day01 Notes](#day01-notes)
+	- [New and Delete](#new-and-delete)
+	- [References](#references)
+	- [Filestreams](#filestreams)
+
 ## New and Delete
 
 - Two new operators that replace `malloc` and `free`
