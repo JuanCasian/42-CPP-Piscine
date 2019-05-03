@@ -6,7 +6,7 @@
 /*   By: jcasian <jcasian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:07:43 by jcasian           #+#    #+#             */
-/*   Updated: 2019/05/02 17:02:26 by jcasian          ###   ########.fr       */
+/*   Updated: 2019/05/02 19:59:08 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <string>
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 
 class FragTrap {
 
@@ -36,13 +38,29 @@ public:
 	std::string		getName(void) const;
 	int				getMeleeAttackDamage(void) const;
 	int				getRangedAttackDamage(void) const;
+	int				getFartAttackDamage(void) const;
+	int				getDanceAttackDamage(void) const;
+	int				getPeanutButterAttackDamage(void) const;
+	int				getBubblesAttackDamage(void) const;
+	int				getTicklesAttackDamage(void) const;
 	int				getArmorDamageReduction(void) const;
 
 	/* Other */
-	void	rangedAttack(std::string const &target);
-	void	meleeAttack(std::string const &target);
+
+	
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
+
+	// Attacks
+	void	vaulthunter_dot_exe(std::string const & target);
+	void	rangedAttack(std::string const &target);
+	void	meleeAttack(std::string const &target);
+	void	fartAttack(std::string const &target);
+	void	danceAttack(std::string const &target);
+	void	peanutButterAttack(std::string const &target);
+	void	bubblesAttack(std::string const &target);
+	void	ticklesAttack(std::string const &target);
+	
 
 private:
 	FragTrap(void);
@@ -55,9 +73,15 @@ private:
 	std::string		_name;
 	int				_meleeAttackDamage;
 	int				_rangedAttackDamage;
+	int				_fartAttackDamage;
+	int				_danceAttackDamage;
+	int				_peanutButterAttackDamage;
+	int				_bubblesAttackDamage;
+	int				_ticklesAttackDamage;
 	int				_armorDamageReduction;
 	
-	
+	static int const 		_nAttacks;
+
 };
 
 #endif
