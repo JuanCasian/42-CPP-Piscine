@@ -4,6 +4,7 @@
 	- [Inheritance](#inheritance)
 	- [Virtual Functions](#virtual-functions)
 		- [Virtual destructors](#virtual-destructors)
+	- [Diamond problem](#diamond-problem)
 
 ## Inheritance
 
@@ -203,4 +204,47 @@ Constructing base
 Constructing derived
 Destructing derived
 Destructing base
+```
+
+## Diamond problem
+
+- When you have two superclasses that have a common base class and you try to use the childclass, you will run into the problem that the common base class constructor will be run 2 multiple times, creating 2 copies of all the attributes, causing ambiguitites.
+
+![Example](res/img1.png)
+
+- In order to solve this, when you inherit on the middle level class you will add `virtual` keyword in the inheritance
+  - `class Student: virtual public Person`
+```
+#include<iostream> 
+using namespace std; 
+class Person { 
+public: 
+	Person(int x) { cout << "Person::Person(int ) called" << endl; } 
+	Person()	 { cout << "Person::Person() called" << endl; } 
+}; 
+
+class Faculty : virtual public Person { 
+public: 
+	Faculty(int x):Person(x) { 
+	cout<<"Faculty::Faculty(int ) called"<< endl; 
+	} 
+}; 
+
+class Student : virtual public Person { 
+public: 
+	Student(int x):Person(x) { 
+		cout<<"Student::Student(int ) called"<< endl; 
+	} 
+}; 
+
+class TA : public Faculty, public Student { 
+public: 
+	TA(int x):Student(x), Faculty(x), Person(x) { 
+		cout<<"TA::TA(int ) called"<< endl; 
+	} 
+}; 
+
+int main() { 
+	TA ta1(30); 
+} 
 ```
