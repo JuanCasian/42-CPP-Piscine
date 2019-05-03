@@ -1,6 +1,11 @@
 # Day03 Notes
 
-# Inheritance
+- [Day03 Notes](#day03-notes)
+	- [Inheritance](#inheritance)
+	- [Virtual Functions](#virtual-functions)
+		- [Virtual destructors](#virtual-destructors)
+
+## Inheritance
 
 - A way to make classes relate to each other so that the child will have the same attributes as the parent
   
@@ -91,4 +96,111 @@ public:
 		return ;
 	}
 };
+```
+
+---
+
+## Virtual Functions
+
+- Is a member function which is declased within a base class and then is overriden in a derived class.
+- This is mostly used for polymorphism because you create a pointer of the base class which can point to any child class.
+  - Without the `virtual` part, if you called a function which is both defined in the base class and in the child class then you would run the base class function.
+  - With the `virtual` function when you call the function in the runtime the program will look what the pointer is pointing to (base class or child class) and run the correct function.
+- Rules for virtual functions:
+  - Cannot be static and cannot be a friend function of another class
+  - This functions must be accessed using a pointer or a reference of the base class type to achieve run time polymorphism
+  - The prototype of virtual functions should be the same in base ad in derived clas
+  - They are always defined in base class and then overriden in child class.
+    - It is not mandatory for a child class to override the function. If it is not overriden then the base class function will be run.
+  - A class can have a virtual destructor but not a virtual constructor
+  - When creating a `virtual` funciton on the base class you don't need the `virtual` keyword on the derived class
+```
+// CPP program to illustrate 
+// concept of Virtual Functions 
+#include<iostream> 
+using namespace std; 
+
+class base 
+{ 
+public: 
+	virtual void print () 
+	{ cout<< "print base class" <<endl; } 
+
+	void show () 
+	{ cout<< "show base class" <<endl; } 
+}; 
+
+class derived:public base 
+{ 
+public: 
+	void print () 
+	{ cout<< "print derived class" <<endl; } 
+
+	void show () 
+	{ cout<< "show derived class" <<endl; } 
+}; 
+
+int main() 
+{ 
+	base *bptr; 
+	derived d; 
+	bptr = &d; 
+	
+	//virtual function, binded at runtime 
+	bptr->print(); 
+	
+	// Non-virtual function, binded at compile time 
+	bptr->show(); 
+}
+
+PRINTS:
+print derived class
+show base class
+```
+
+- This simple program shows how virtual functions work on the reality
+- **`virtual` keyword must only be used in the class declaration**
+  - In other words, use it in the hpp, not the cpp
+
+### Virtual destructors
+
+- Destructor have a special case of virtual functions because they don't need to have the same name to be overriden in the derived class
+  - And they are not actually overriden, but adding the `virtual` keyword forces the program to delete both the child and the parent class
+
+```
+// A program with virtual destructor 
+#include<iostream> 
+
+using namespace std; 
+
+class base { 
+public: 
+	base()	 
+	{ cout<<"Constructing base \n"; } 
+	virtual ~base() 
+	{ cout<<"Destructing base \n"; }	 
+}; 
+
+class derived: public base { 
+public: 
+	derived()	 
+	{ cout<<"Constructing derived \n"; } 
+	~derived() 
+	{ cout<<"Destructing derived \n"; } 
+}; 
+
+int main(void) 
+{ 
+derived *d = new derived(); 
+base *b = d; 
+delete b; 
+getchar(); 
+return 0; 
+} 
+
+PRINTS:
+Constructing base
+Constructing derived
+Destructing derived
+Destructing base
 ```
