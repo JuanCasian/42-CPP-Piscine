@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <jcasian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/02 16:07:43 by jcasian           #+#    #+#             */
-/*   Updated: 2019/05/02 20:55:07 by jcasian          ###   ########.fr       */
+/*   Created: 2019/05/02 20:30:00 by jcasian           #+#    #+#             */
+/*   Updated: 2019/05/02 20:51:08 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAG_TRAP_HPP
-# define FRAG_TRAP_HPP
+#ifndef SCAV_TRAP_HPP
+# define SCAV_TRAP_HPP
 
 #include <string>
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
 
-class FragTrap {
+class ScavTrap {
 
 public:
 	/* Constructors & Destructors */
-	FragTrap(std::string name);
-	FragTrap(FragTrap const &src);
-	~FragTrap(void);
+	ScavTrap(std::string name);
+	ScavTrap(ScavTrap const &src);
+	~ScavTrap(void);
 
 	/* Operators overload */
-	FragTrap		&operator=(FragTrap const &rhs);
+	ScavTrap		&operator=(ScavTrap const &rhs);
 
 	/* Getters and Setters */
 	int				getHitPoints(void) const;
@@ -47,12 +47,13 @@ public:
 
 	/* Other */
 
-	
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 
+	//Challenge
+	void	challengeNewComer(void) const;
+
 	// Attacks
-	void	vaulthunter_dot_exe(std::string const & target);
 	void	rangedAttack(std::string const &target) const;
 	void	meleeAttack(std::string const &target) const;
 	void	fartAttack(std::string const &target) const;
@@ -63,7 +64,7 @@ public:
 	
 
 private:
-	FragTrap(void);
+	ScavTrap(void);
 
 	int				_hitPoints;
 	int				_maxHitPoints;
@@ -80,8 +81,8 @@ private:
 	int				_ticklesAttackDamage;
 	int				_armorDamageReduction;
 	
-	static int const 		_nAttacks;
-
+	static std::string const	_challenges[];
+	static int const			_nChallenges;
 };
 
 #endif
