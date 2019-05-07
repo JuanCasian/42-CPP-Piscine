@@ -6,7 +6,7 @@
 /*   By: jcasian <jcasian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 20:24:06 by jcasian           #+#    #+#             */
-/*   Updated: 2019/05/07 15:16:32 by jcasian          ###   ########.fr       */
+/*   Updated: 2019/05/07 15:29:48 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,16 @@ void	Bureaucrat::decrementGrade(int decrement) {
 	if (decrement < 0)
 		return ;
 	this->setGrade(this->_grade + decrement);
+}
+
+void	Bureaucrat::signForm(Form &form) {
+	try {
+		form.beSigned(*this);
+		std::cout << this->_name << " signs " << form.getName() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << this->_name << " cannot sign " << form.getName();
+		std::cout << " because " << e.what() << std::endl;
+	}
 }
 
 /* Exceptions */

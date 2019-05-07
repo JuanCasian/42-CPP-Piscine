@@ -6,7 +6,7 @@
 /*   By: jcasian <jcasian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 19:15:59 by jcasian           #+#    #+#             */
-/*   Updated: 2019/05/07 15:16:21 by jcasian          ###   ########.fr       */
+/*   Updated: 2019/05/07 16:17:32 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 
@@ -66,6 +69,7 @@ public:
 	/* Functions */
 	void	incrementGrade(int increment);
 	void	decrementGrade(int decrement);
+	void	signForm(Form &form);
 
 protected:
 	Bureaucrat(void);

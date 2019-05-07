@@ -1,80 +1,82 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcasian <jcasian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 19:15:59 by jcasian           #+#    #+#             */
-/*   Updated: 2019/05/07 15:16:21 by jcasian          ###   ########.fr       */
+/*   Created: 2019/05/07 15:06:00 by jcasian           #+#    #+#             */
+/*   Updated: 2019/05/07 16:17:53 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT
-#define BUREAUCRAT
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include <iostream>
 #include <string>
+#include "Bureaucrat.hpp"
 
-class Bureaucrat {
+class Bureaucrat;
+class Form {
 
 public:
 	/* Exceptions */
 	class GradeTooHighException : public std::exception {
+	
 	public:
 		/* Constructors */
 		GradeTooHighException(void);
 		GradeTooHighException(GradeTooHighException const &);
-	
 		/* Destructor */
 		virtual ~GradeTooHighException(void) throw();
-	
 		/* Operators */
 		GradeTooHighException	&operator=(GradeTooHighException const &);
-		/* Overrides */
-		virtual const char	*what(void) const throw();
+		/* Override */
+		virtual const char *what(void) const throw();
 	};
 	class GradeTooLowException : public std::exception {
+	
 	public:
 		/* Constructors */
 		GradeTooLowException(void);
 		GradeTooLowException(GradeTooLowException const &);
-	
 		/* Destructor */
 		virtual ~GradeTooLowException(void) throw();
-	
 		/* Operators */
 		GradeTooLowException	&operator=(GradeTooLowException const &);
-		/* Overrides */
-		virtual const char	*what(void) const throw();
+		/* Override */
+		virtual const char *what(void) const throw();
 	};
-	/* Constructors */
-	Bureaucrat(std::string name, int grade);
-	Bureaucrat(Bureaucrat const &src);
+    /* Constructors */
+	Form(std::string name, int minGrade);
+    Form(Form const &src);
 
-	/* Destructor */
-	virtual ~Bureaucrat(void);
+    /* Destructor */
+    virtual ~Form(void);
 
-	/* Operators */
-	Bureaucrat	&operator=(Bureaucrat const &rhs);
+    /* Operators */
+    Form	&operator=(Form const &rhs);
 
-	/* Getters and setters */
+    /* Getters and setters */
 	const std::string	getName(void) const;
-	int	getGrade(void) const;
-	void	setGrade(int grade);
+	bool	getSigned(void) const;
+	int	getMinGrade(void) const;
 
-	/* Functions */
-	void	incrementGrade(int increment);
-	void	decrementGrade(int decrement);
+    /* Other */
+	void	beSigned(Bureaucrat const &bureaucrat);
 
+	static int inbound(int grade);
 protected:
-	Bureaucrat(void);
+    Form(void);
 
 private:
-	std::string const	_name;
-	int					_grade;
+    const std::string   _name;
+    bool                _signed;
+    const int			_minGrade;
 };
 
-std::ostream	&operator<<(std::ostream &o, Bureaucrat const &rhs);
+std::ostream	&operator<<(std::ostream &o, Form const &rhs);
+
 
 #endif

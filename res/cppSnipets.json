@@ -101,7 +101,7 @@
 				"\t/* Operators */",
 				"\t${2:ClassName}\t&operator=(${2:ClassName} const &);",
 				"\t/* Override */",
-				"\tvirtual const char *what(void) const throw()",
+				"\tvirtual const char *what(void) const throw();",
 			"};"
 		]
 	},
