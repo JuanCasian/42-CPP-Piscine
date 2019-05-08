@@ -1,0 +1,132 @@
+{
+	"HPP Class": {
+		"prefix": "hppclass",
+		"body": [
+			"#ifndef ${1:FileName}",
+			"#define ${1:FileName}",
+			"",
+			"#include <iostream>",
+			"#include <string>",
+			"",
+			"class ${2:ClassName} {",
+			"",
+			"public:",
+			"\t/* Constructors */",
+			"\t${2:ClassName}(${2:ClassName} const &src);",
+			"",
+			"\t/* Destructor */",
+			"\tvirtual ~${2:ClassName}(void);",
+			"",
+			"\t/* Operators */",
+			"\t${2:ClassName}\t&operator=(${2:ClassName} const &rhs);",
+			"",
+			"\t/* Getters and setters */",
+			"",
+			"\t/* Other */",
+			"",
+			"protected:",
+			"\t${2:ClassName}(void);",
+			"",
+			"private:",
+			"\t$0",
+			"};",
+			"",
+			"#endif",
+			""
+		]
+	},
+	"CPP Class": {
+		"prefix": "cppclass",
+		"body": [
+			"#include \"${1:ClassName}.hpp\"",
+			"",
+			"/* Constructors */",
+			"${1:ClassName}::${1:ClassName}(void) {",
+			"\treturn ;",
+			"}",
+			"",
+			"${1:ClassName}::${1:ClassName}(${1:ClassName} const &src) {",
+			"\t*this = src;",
+			"\treturn ;",
+			"}",
+			"",
+			"/* Destructor */",
+			"${1:ClassName}::~${1:ClassName}(void) {",
+			"\treturn ;",
+			"}",
+			"",
+			"/* Operator */",
+			"${1:ClassName}\t&${1:ClassName}::operator=(${1:ClassName} const &rhs) {",
+			"\t$0",
+			"\treturn *this;",
+			"}",
+			"",
+			"/* Getters and Setters */",
+			""
+		]
+	},
+	"HPP Getter Setter": {
+		"prefix": "gshpp",
+		"body": [
+			"${1:int}\t$4get${2:Var}(void) const;",
+			"void\tset${2:Var}(${1:int} $4${3:varName});$0"
+		]
+	},
+	"CPP Getter Setter": {
+		"prefix": "gscpp",
+		"body": [
+			"${1:int}\t$5${4:ClassName}::get${2:Var}(void) const {",
+			"\treturn this->_${3:varName};",
+			"}",
+			"void\t${4:ClassName}::set${2:Var}(${1:int} $5${3:varName}) {",
+			"\tthis->_${3:varName} = ${3:varName};",
+			"}$0"
+		]
+	},
+	"Init list": {
+		"prefix": "inli",
+		"body": "_${1:VarName}(${1:VarName})$0"
+	},
+	"Exception HPP": {
+		"prefix": "exhpp",
+		"body": [
+			"class ${2:ClassName} : public std::exception {",
+				"",
+				"public:",
+				"\t/* Constructors */",
+				"\t${2:ClassName}(void);",
+				"\t${2:ClassName}(${2:ClassName} const &);",
+				"\t/* Destructor */",
+				"\tvirtual ~${2:ClassName}(void) throw();",
+				"\t/* Operators */",
+				"\t${2:ClassName}\t&operator=(${2:ClassName} const &);",
+				"\t/* Override */",
+				"\tvirtual const char *what(void) const throw();",
+			"};"
+		]
+	},
+	"Exception CPP": {
+		"prefix": "excpp",
+		"body": [
+			"/* Constructors */",
+			"${1:MainClass}::${2:ExceptionClass}::${2:ExceptionClass}(void) {",
+				"\treturn ;",
+			"}",
+			"${1:MainClass}::${2:ExceptionClass}::${2:ExceptionClass}(${1:MainClass}::${2:ExceptionClass} const &) {",
+				"return ;",
+			"}",
+			"/* Destructor */",
+			"${1:MainClass}::${2:ExceptionClass}::~${2:ExceptionClass}(void) throw() {",
+				"\treturn ;",
+			"}",
+			"/* Operator */",
+			"${1:MainClass}::${2:ExceptionClass}\t&${1:MainClass}::${2:ExceptionClass}::operator=(${1:MainClass}::${2:ExceptionClass} const &) {",
+				"\treturn *this;",
+			"}",
+			"/* What override function */",
+			"const char *${1:MainClass}::${2:ExceptionClass}::what(void) const throw() {",
+				"\treturn \"${3:Mesage}\";",
+			"}$0"
+		]
+	}
+}
