@@ -1,9 +1,10 @@
-NAME = ex01
+NAME = ex03
 FLAGS = -Wall -Werror -Wextra
 SRCSDIR = .
 
 SRCS = $(addprefix $(SRCSDIR)/,\
-	   Form.cpp Bureaucrat.cpp main.cpp)
+	   AForm.cpp Bureaucrat.cpp main.cpp ShrubberyCreationForm.cpp\
+	   RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp)
 
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 
@@ -20,5 +21,6 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f *_shrubbery
 
 re: fclean $(NAME)
