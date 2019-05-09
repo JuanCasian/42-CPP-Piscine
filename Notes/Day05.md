@@ -1,5 +1,9 @@
 # Notes Day05
 
+- [Notes Day05](#notes-day05)
+	- [Nested Classes](#nested-classes)
+	- [Exceptions](#exceptions)
+
 ## Nested Classes
 
 - aka Imbricated classes 
