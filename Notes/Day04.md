@@ -1,5 +1,11 @@
 # Day04 notes
 
+- [Day04 notes](#day04-notes)
+	- [Sub-typing polymorphism](#sub-typing-polymorphism)
+	- [Abstract classes and interfaces](#abstract-classes-and-interfaces)
+		- [Abstract classes](#abstract-classes)
+		- [Interfaces](#interfaces)
+
 ## Sub-typing polymorphism
 
 ```
