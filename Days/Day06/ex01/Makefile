@@ -1,9 +1,9 @@
-NAME = converter
+NAME = ex01
 FLAGS = -Wall -Werror -Wextra
 SRCSDIR = .
 
 SRCS = $(addprefix $(SRCSDIR)/,\
-	   Converter.cpp main.cpp)
+	   main.cpp)
 
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 

@@ -6,7 +6,7 @@
 /*   By: jcasian <jcasian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 21:14:25 by jcasian           #+#    #+#             */
-/*   Updated: 2019/05/08 21:17:23 by jcasian          ###   ########.fr       */
+/*   Updated: 2019/05/08 21:52:07 by jcasian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,31 @@ void	Converter::printConversions(void) const {
 	float floatVal;
 	double doubleVal;
 	bool	intPosible = true;
+	bool	doublePosible = true;
 
 	try {
-		intVal = std::stoi(this->_str);
-		if (intVal >= 32 && intVal <= 126) {
-			std::cout << "char: " << (static_cast<char>(intVal)) << std::endl;
-		} else {
-			std::cout << "char: Non displayable" << std::endl;
-		}
+		doubleVal = std::stod(this->_str);
 	} catch (std::exception &) {
-		std::cout << "char: impossible" << std::endl;
-		intPosible = false;
+		doublePosible = false;
 	}
-	if (intPosible) {
-		std::cout << "int: " << intVal << std::endl;
-	} else {
-		std::cout << "int: imposible" << std::endl;
-	}
-	try {
-		floatVal = std::stof(this->_str);
+	if (doublePosible) {
+		if (doubleVal >= -2147483648 && doubleVal <= 2147483647) {
+			intVal = static_cast<int>(doubleVal);
+			if (intVal >= 32 && intVal <= 126) {
+				std::cout << "char: " << (static_cast<char>(intVal)) << std::endl;
+			} else {
+				std::cout << "char: Non displayable" << std::endl;
+			}
+		} else {
+			std::cout << "char: impossible" << std::endl;
+			intPosible = false;
+		}
+		if (intPosible) {
+			std::cout << "int: " << intVal << std::endl;
+		} else {
+			std::cout << "int: imposible" << std::endl;
+		}
+		floatVal = static_cast<float>(doubleVal);
 		if (intPosible) {
 			if (intVal == floatVal) {
 				std::cout << "float: " << floatVal << ".0f" << std::endl;
@@ -76,21 +82,23 @@ void	Converter::printConversions(void) const {
 		} else {
 			std::cout << "float: " << floatVal << "f" << std::endl;
 		}
-	} catch (std::exception &) {
-		std::cout << "float: impossible" << std::endl;
-	}
-	try {
-		doubleVal = std::stod(this->_str);
-		if (intPosible) {
-			if (doubleVal == intVal) {
-				std::cout << "double: " << doubleVal << ".0" << std::endl;
+		try {
+			if (intPosible) {
+				if (doubleVal == intVal) {
+					std::cout << "double: " << doubleVal << ".0" << std::endl;
+				} else {
+					std::cout << "double: " << doubleVal << std::endl;
+				}
 			} else {
 				std::cout << "double: " << doubleVal << std::endl;
 			}
-		} else {
-			std::cout << "double: " << doubleVal << std::endl;
+		} catch (std::exception &) {
+			std::cout << "double: impossible" << std::endl;
 		}
-	} catch (std::exception &) {
+	} else {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
 		std::cout << "double: impossible" << std::endl;
 	}
 }
