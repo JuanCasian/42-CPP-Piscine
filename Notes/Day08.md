@@ -45,3 +45,27 @@ int main() {
 - There is a lot of container clases and each class has iterators
 - there are a lot of algorithms saved in the STL
   - Like the `foreach()`
+
+---
+
+## Typename keyword
+
+- This keyword is used inside templates to specify a variable that can be any other when instantiated
+- But `typename` can also be written for dependant variables
+
+Ex: 
+
+```
+template<typename T>
+typename T::iterator easyfind(T &cont, int n) {
+	return (std::find(cont.begin(), cont.end(), n));
+}
+```
+
+- In the example above the `typename` keyword is used to tell the template which variables you are going to use
+  - And then a second time inside the template to tell the compiler that that unknown variable is going to be anything that `T` is + `::iterator`
+    - In other words ::iterator is dependant to T
+- In a template declaration, typename can be used as an alternative to class to declare type template parameters and template template parameters (since C++17).
+- Inside a declaration or a definition of a template, typename can be used to declare that a dependent qualified name is a type.
+- Inside a declaration or a definition of a template, (until C++11) typename can be used before a non-dependent qualified type name. It has no effect in this case.
+- Inside a requirements for type requirements (since C++20)
