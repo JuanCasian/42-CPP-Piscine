@@ -74,6 +74,7 @@ Both of this problems are solved with templates which allow you to leave a hole 
 
 ## Templates
 
+- Do not need to be compiled
 - Is a syntax that allows you to define cod in which you'll introduce type variables
 - This allow you to define class, function and structure templates
 - Then the compiler will define which type you want and fill it up for you
