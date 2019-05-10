@@ -1,9 +1,9 @@
-NAME = ex00
+NAME = ex01
 FLAGS = -Wall -Werror -Wextra
 SRCSDIR = .
 
 SRCS = $(addprefix $(SRCSDIR)/,\
-	   whatever.cpp)
+	   iter.cpp)
 
 OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 
